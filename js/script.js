@@ -10,6 +10,8 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
+
+// quotes array holds multiple objects. In this case quotes with several properties
 const quotes = [
   {
     quote: 'Most people think buying is investing, but they’re wrong. Buying doesn’t make you an investor any more than buying groceries makes you a chef.',
@@ -56,6 +58,8 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
+
+// creates a random number from 0 to the length of the array - 1 and selects that index from the quotes array. 
 function getRandomQuote(quoteArr){
   const randomNumber = Math.floor(Math.random() * quoteArr.length)
   return quoteArr[randomNumber];
@@ -67,6 +71,7 @@ function getRandomQuote(quoteArr){
 /***
  * `printQuote` function
 ***/
+//prints the random quote in the DOM
 function printQuote(){
   // radomQuote holds a single random quote
   const randomQuote = getRandomQuote(quotes);
@@ -91,9 +96,26 @@ function printQuote(){
 
   html+= `</p>`
 
+  // adding the html variable content to an element object's innerHTML property
   document.getElementById("quote-box").innerHTML = html;
+  randomBackGroundColors();
 
 }
+
+// creates a random number betweern 0 and number value 
+function randomNumberZeroToN(number){
+  return Math.floor(Math.random() * number) + 1
+}
+
+// add an inline style attribute to the body tag
+function randomBackGroundColors(){
+  const body = document.querySelector('body')
+  body.style.backgroundColor = `rgb(${randomNumberZeroToN(255)}, ${randomNumberZeroToN(255)}, ${randomNumberZeroToN(255)})`
+}
+
+
+setInterval(printQuote, 10000)
+
 
 
 
